@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="stylesheets/reset.css">
+	<link rel="stylesheet" href="stylesheets/login.css">
+
+</head>
+<body>
+	<h1><img src="images/login/shopex.png" alt="商标"></h1>
+	<h2><img src="images/login/ecshop-logo.png" alt="logo"></h2>
+	<div id="login">
+		<input type="text" name="username" id="username" value="" placeholder="用户名"><br>
+		<input type="password" name="pwd" id="pwd" placeholder="密码"><br>
+		<input type="text" id="code" placeholder="验证码"><span id="yanzhen" script="javascript:;"></span> <br>
+		<button type="button" onclick="Login()" id="login">登录</button><br>
+		<input type="checkbox" id="rember"> <label for="rember">保存登陆信息</label>
+		<a href="#">忘记密码</a><a href="#">去店铺首页</a>
+		<img src="images/login/icloud-bar.png" alt="">
+	</div>
+</body>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script>
+	function Login(){
+		$.ajax({
+			url : "/api/regist4ajax",
+			type : "post",
+			data : {
+				username : $("#username").val(),
+				pwd : $("#pwd").val()
+			},
+			success : function(res){
+				if(res.code ==1){
+					alert(res.message)
+					location.href = "/backstage"
+				} else {
+					alert(res.message)
+				}
+			}
+		})
+	}
+	$("#code").blur(function() {
+		var cc = $(this).val().toUpperCase();;
+		var bb = $("#yanzhen").html().toUpperCase();
+		if(cc!=bb){
+			alert("验证码错误")
+		}
+	});
+
+	window.onload = function(){
+		Code();
+	}
+	var yanzhen = document.getElementById("yanzhen");
+	yanzhen.onclick = function(){
+		Code();
+	}
+	function Code(){
+		var arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
+		var str = "";
+		for(var i = 0;i < 4;i ++){
+			var c = parseInt(Math.random()*arr.length);
+			str += arr[c];
+		}
+		$("#yanzhen").html(str); 
+	};
+
+</script>
+
+</html>
