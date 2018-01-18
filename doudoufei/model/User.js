@@ -6,6 +6,7 @@ var User = new Schema({
     price        : Number,
     stock        : Number,
     xuni        : Number,
+    flag        :Number, 
     create_date: { type: Date, default: Date.now }
 });
 // 创建model对象

@@ -86,7 +86,7 @@
 		<!--                       -->
 		<div class="tab2" style="display: block;">
 			<div class="tab22" style="display: block;">
-  <form action="javascript:searchGoods()" name="searchForm">
+  <form action="" name="searchForm">
     <img src="images/back/search.gif" width="26" height="22" border="0" alt="SEARCH" style="display: inline-block;">
         <!-- 分类 -->
     <select name="cat_id">
@@ -121,8 +121,8 @@
            <!-- 上架 -->
       <select name="is_on_sale"><option value="">全部</option><option value="1">上架</option><option value="0">下架</option></select>
         <!-- 关键字 -->
-    关键字 <input type="text" name="keyword" size="15">
-    <input type="submit" value=" 搜索 " class="button">
+    关键字 <input type="text" id="keyword11" size="15">
+    <input type="button" value="搜索 " id="src1" >
   </form>
 </div>
 <!--           ====================================== -->
@@ -152,11 +152,11 @@
 			        总计  <span id="totalRecords">0</span>
 			        个记录分为 <span id="totalPages">1</span>
 			        页当前第 <span id="pageCurrent">1</span>
-			        页，每页 <input type="text" size="3" id="pageSize" value="15">
+			        页，每页 <input type="text" size="3" id="pageSize" value="3">
 			          <span id="page-link">
 			          <a href="javascript:listTable.gotoPageFirst()">第一页</a>
-			          <a href="javascript:listTable.gotoPagePrev()">上一页</a>
-			          <a href="javascript:listTable.gotoPageNext()">下一页</a>
+			          <a href="javascript:gotoPageLast()">上一页</a>
+			          <a href="javascript:gotoPageNext()">下一页</a>
 			          <a href="javascript:listTable.gotoPageLast()">最末页</a>
 			          <select id="gotoPage" onchange="Page()">
 			            <option value="1">1</option><option value="2">2</option>         
